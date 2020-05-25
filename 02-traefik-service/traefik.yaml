@@ -4,7 +4,7 @@ metadata:
   name: traefik
   namespace: kube-system
 spec:
-  clusterIP: 192.168.211.177
+  clusterIP: 10.43.0.10
   externalTrafficPolicy: Cluster
   ports:
     - name: web
@@ -63,11 +63,11 @@ spec:
             - --entrypoints.websecure.Address=:443
             - --providers.kubernetescrd
             - --certificatesresolvers.default.acme.tlschallenge
-            - --certificatesresolvers.default.acme.email=me@myself.com
+            - --certificatesresolvers.default.acme.email=letsencrypt@enigmacurry.com
             - --certificatesresolvers.default.acme.storage=acme.json
             # Please note that this is the staging Let's Encrypt server.
             # Once you get things working, you should remove that whole line altogether.
-            # - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+            - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
           ports:
             - name: web
               containerPort: 80
